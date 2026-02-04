@@ -1,0 +1,371 @@
+/* ========================= */
+/* RESET */
+/* ========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ========================= */
+/* BASE */
+/* ========================= */
+body {
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  background: #000;
+  color: #fff;
+}
+
+/* ========================= */
+/* IMMAGINI DI BACKGROUND */
+/* ========================= */
+.slide-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+/* ========================= */
+/* SLIDE BASE */
+/* ========================= */
+.slide {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* ========================= */
+/* TOPBAR DEFINITIVA */
+/* ========================= */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 80px;
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255,255,255,0.8);
+  z-index: 9999;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+}
+
+.topbar-inner {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topbar-inner > div:not(.logo) {
+  height: 100%;
+  min-width: 80px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Logo centrato e nero */
+.logo {
+  font-family: 'Montserrat';
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-align: center;
+  flex: 1;
+  color: #000;
+}
+
+/* ========================= */
+/* HERO */
+/* ========================= */
+.slide-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 1;
+}
+
+.slide-hero h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Montserrat';
+  font-weight: 900;
+  text-align: center;
+  text-transform: uppercase;
+  background: rgba(0,0,0,0.5);
+  padding: 20px;
+  z-index: 2;
+  font-size: clamp(32px, 6vw, 85px);
+}
+
+/* ========================= */
+/* SLIDE SPLIT / DOUBLE */
+/* ========================= */
+.slide-split,
+.slide-double {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+}
+
+/* blocco nero dietro testi slide-split */
+.slide-split::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%; /* metà slide verticale */
+  height: 100%;
+  background: rgba(0,0,0,0.45);
+  z-index: 1;
+}
+
+/* blocco nero slide-double (orizzontale sopra) */
+.slide-double::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;      /* tutta la larghezza */
+  height: 50%;      /* metà altezza in verticale */
+  background: rgba(0,0,0,0.6);
+  z-index: 1;
+}
+
+/* ========================= */
+/* SLIDE 4 – COMMERCE */
+/* ========================= */
+.slide-commerce {
+  position: relative;
+}
+
+.slide-commerce::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%; /* metà slide verticale */
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 1;
+}
+
+.slide-commerce-title {
+  position: absolute;
+  top: 30px;
+  left: 20px;
+  font-family: 'Montserrat';
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(28px, 3vw, 52px);
+  z-index: 2;
+}
+
+/* Testi slide-commerce – senza sfondo nero */
+.text-box {
+  position: absolute;
+  font-family: 'Montserrat';
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(16px, 1.5vw, 24px);
+  line-height: 1.3;
+  z-index: 2;
+  background: transparent;   /* rimosso sfondo nero */
+  padding: 0;
+  border-radius: 0;
+}
+
+.text-box-1 { left: 40px; top: 180px; max-width: 250px; }
+.text-box-2 { left: 280px; top: 250px; max-width: 400px; }
+.text-box-3 { left: 40px; bottom: 30px; max-width: 250px; }
+
+/* ========================= */
+/* TESTI GENERALI */
+.text {
+  padding: 100px 70px;
+  z-index: 2;
+  position: relative;
+}
+
+.text p,
+.text li {
+  font-family: 'Montserrat';
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.6;
+  font-size: clamp(15px, 1.2vw, 20px);
+}
+
+.text h2 {
+  font-family: 'Montserrat';
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: clamp(22px, 2.5vw, 32px);
+}
+
+.text ul {
+  margin-top: 15px;
+  padding-left: 18px;
+}
+
+.text.centro {
+  position: absolute;
+  width: 100%;
+  bottom: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ========================= */
+/* SLIDE FINAL */
+.slide-final {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.slide-final::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 50% 0;
+  background: rgba(255,255,255,0.45);
+  z-index: 1;
+}
+
+.slide-final h2 {
+  font-family: 'Montserrat';
+  font-weight: 900;
+  text-align: center;
+  max-width: 900px;
+  margin: 50px auto 0;
+  color: #000;
+  text-transform: uppercase;
+  z-index: 2;
+  position: relative;
+  font-size: clamp(28px, 3.5vw, 48px);
+}
+
+/* ========================= */
+/* FOOTER */
+.final-footer {
+  padding: 120px;
+  background: rgba(0,0,0,0.7);
+  position: relative;
+  z-index: 2;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.footer-section h3 {
+  font-family: 'Montserrat';
+  font-size: 16px;
+  font-weight: 900;
+  border-bottom: 2px solid #fff;
+  padding-bottom: 10px;
+}
+
+.footer-section li {
+  font-size: 13px;
+}
+
+.social-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.social-icon {
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+}
+
+/* ========================= */
+/* MOBILE / TABLET */
+@media (max-width: 768px) {
+
+  .topbar {
+    height: 64px;
+  }
+
+  .topbar-inner {
+    padding: 0 20px;
+  }
+
+  .slide-split,
+  .slide-double {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .slide * {
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+  }
+
+  .text {
+    padding: 40px 20px;
+  }
+
+  .slide-commerce-title {
+    font-size: clamp(22px, 4vw, 36px);
+  }
+
+  .text-box {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    max-width: 100%;
+    margin: 10px 0;
+  }
+
+  .final-footer {
+    padding: 40px 20px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .social-icons {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .slide-split::before,
+  .slide-double::before,
+  .slide-commerce::before {
+    width: 100%;
+    height: 50%;
+  }
+}
