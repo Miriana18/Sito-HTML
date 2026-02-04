@@ -15,6 +15,20 @@ body {
   font-family: 'Roboto', sans-serif;
   background: #000;
   color: #fff;
+  overflow-x: hidden;
+}
+
+/* ========================= */
+/* GESTIONE IMMAGINI HTML */
+/* ========================= */
+.bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Mantiene le proporzioni coprendo l'area */
+  z-index: 0;        /* Sta dietro al contenuto */
 }
 
 /* ========================= */
@@ -24,8 +38,7 @@ body {
   width: 100%;
   min-height: 100vh;
   position: relative;
-  background-size: cover;
-  background-position: center;
+  overflow: hidden; /* Evita che le immagini escano dai bordi */
 }
 
 /* ========================= */
@@ -41,11 +54,9 @@ body {
   backdrop-filter: blur(6px);
   border-bottom: 1px solid rgba(255,255,255,0.8);
   z-index: 9999;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0;
 }
 
 .topbar-inner {
@@ -66,7 +77,6 @@ body {
   user-select: none;
 }
 
-/* Logo centrato e nero */
 .logo {
   font-family: 'Montserrat';
   font-weight: 900;
@@ -79,15 +89,12 @@ body {
 /* ========================= */
 /* HERO */
 /* ========================= */
-.slide-hero {
-  background: url('../assets/Copertina.jpg') no-repeat center / cover;
-}
-
 .slide-hero::after {
   content: "";
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.45);
+  z-index: 1;
 }
 
 .slide-hero h1 {
@@ -115,34 +122,25 @@ body {
   position: relative;
 }
 
-.slide-split {
-  background: url('../assets/Slide 1.jpg') no-repeat center / cover;
-}
-
-.slide-double {
-  background: url('../assets/Slide 2.jpg') no-repeat center / cover;
-}
-
-/* blocco nero dietro testi slide-split */
+/* Overlay neri sopra le immagini HTML */
 .slide-split::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
-  width: 50%; /* metà slide verticale */
+  width: 50%;
   height: 100%;
   background: rgba(0,0,0,0.45);
   z-index: 1;
 }
 
-/* blocco nero slide-double (orizzontale sopra) */
 .slide-double::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;      /* tutta la larghezza */
-  height: 50%;      /* metà altezza in verticale */
+  width: 100%;
+  height: 50%;
   background: rgba(0,0,0,0.6);
   z-index: 1;
 }
@@ -150,17 +148,12 @@ body {
 /* ========================= */
 /* SLIDE 4 – COMMERCE */
 /* ========================= */
-.slide-commerce {
-  background: url('../assets/Slide 3.jpg') no-repeat center / cover;
-  position: relative;
-}
-
 .slide-commerce::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
-  width: 50%; /* metà slide verticale */
+  width: 50%;
   height: 100%;
   background: rgba(0,0,0,0.6);
   z-index: 1;
@@ -177,7 +170,6 @@ body {
   z-index: 2;
 }
 
-/* Testi slide-commerce – senza sfondo nero */
 .text-box {
   position: absolute;
   font-family: 'Montserrat';
@@ -186,9 +178,6 @@ body {
   font-size: clamp(16px, 1.5vw, 24px);
   line-height: 1.3;
   z-index: 2;
-  background: transparent;   /* rimosso sfondo nero */
-  padding: 0;
-  border-radius: 0;
 }
 
 .text-box-1 { left: 40px; top: 180px; max-width: 250px; }
@@ -197,6 +186,7 @@ body {
 
 /* ========================= */
 /* TESTI GENERALI */
+/* ========================= */
 .text {
   padding: 100px 70px;
   z-index: 2;
@@ -222,24 +212,24 @@ body {
 .text ul {
   margin-top: 15px;
   padding-left: 18px;
+  list-style: none;
 }
 
 .text.centro {
   position: absolute;
   width: 100%;
-  bottom: 50%;
+  bottom: 60%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, 50%);
 }
 
 /* ========================= */
 /* SLIDE FINAL */
+/* ========================= */
 .slide-final {
-  background: url('../assets/Slide 4.jpg') no-repeat center / cover;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: relative;
 }
 
 .slide-final::after {
@@ -255,7 +245,7 @@ body {
   font-weight: 900;
   text-align: center;
   max-width: 900px;
-  margin: 50px auto 0;
+  margin: 120px auto 0;
   color: #000;
   text-transform: uppercase;
   z-index: 2;
@@ -264,9 +254,12 @@ body {
 
 /* ========================= */
 /* FOOTER */
+/* ========================= */
 .final-footer {
   padding: 120px;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.8);
+  position: relative;
+  z-index: 2;
 }
 
 .footer-content {
@@ -281,10 +274,13 @@ body {
   font-weight: 900;
   border-bottom: 2px solid #fff;
   padding-bottom: 10px;
+  margin-bottom: 15px;
 }
 
+.footer-section ul { list-style: none; }
 .footer-section li {
   font-size: 13px;
+  margin-bottom: 5px;
 }
 
 .social-icons {
@@ -302,67 +298,42 @@ body {
   align-items: center;
   justify-content: center;
   color: #000;
+  text-decoration: none;
+}
+
+.footer-logo {
+  margin-top: 40px;
+  font-family: 'Montserrat';
+  font-weight: 900;
+  text-align: center;
+  opacity: 0.5;
 }
 
 /* ========================= */
 /* MOBILE / TABLET */
+/* ========================= */
 @media (max-width: 768px) {
-
-  .topbar {
-    height: 64px;
-  }
-
-  .topbar-inner {
-    padding: 0 20px;
-  }
-
-  .slide-split,
-  .slide-double {
+  .topbar { height: 64px; }
+  
+  .slide-split, .slide-double {
     display: flex;
     flex-direction: column;
   }
 
-  .slide * {
+  /* Rimuove i posizionamenti assoluti su mobile per leggibilità */
+  .slide-hero h1, .text.centro, .text-box {
     position: relative !important;
     inset: auto !important;
     transform: none !important;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(0,0,0,0.6);
   }
 
-  .text {
-    padding: 40px 20px;
-  }
+  .text { padding: 80px 20px 40px; }
 
-  .slide-commerce-title {
-    font-size: clamp(22px, 4vw, 36px);
-  }
-
-  .text-box {
-    position: relative !important;
-    left: auto !important;
-    top: auto !important;
-    bottom: auto !important;
-    max-width: 100%;
-    margin: 10px 0;
-  }
-
-  .final-footer {
-    padding: 40px 20px;
-  }
-
-  .footer-content {
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  .social-icons {
-    flex-direction: row;
-    justify-content: center;
-  }
-
-  .slide-split::before,
-  .slide-double::before,
-  .slide-commerce::before {
-    width: 100%;
-    height: 50%;
-  }
+  .final-footer { padding: 40px 20px; }
+  .footer-content { flex-direction: column; text-align: center; }
+  .footer-section h3 { display: inline-block; }
+  .social-icons { flex-direction: row; justify-content: center; }
 }
